@@ -44,6 +44,8 @@ const createBook = async function (req, res) {
     if (!objectIdValid(userId)) return res.status(400).send({ status: false, message: "userId is invalid" });
     const checkUser = await userModel.findById(userId);
     if (!checkUser) return res.status(404).send({ status: false, message: "User not found" });
+
+
     let token = req.headers["x-api-key"];
     let decodedToken = jwt.verify(token, "BOOK-MANAGEMENT");
     if (req.body.userId != decodedToken.userId) return res.status(400).send({ status: false, message: "users only use their profile.." });
@@ -74,7 +76,7 @@ const createBook = async function (req, res) {
 
 module.exports.createBook = createBook
 
-
+// =================================================get books============================================================
 
 
 const getBookByQuery = async function (req, res) {
@@ -118,6 +120,7 @@ const getBookByQuery = async function (req, res) {
 module.exports.getBookByQuery = getBookByQuery
 
 
+// ================================get books by params========================================
 
 const getBookByParam = async function (req, res) {
   try {
@@ -146,7 +149,7 @@ const getBookByParam = async function (req, res) {
 module.exports.getBookByParam = getBookByParam
 
 
-
+// ============================================update book==============================================
 
 const updateBook = async function (req, res) {
   try {
@@ -205,7 +208,7 @@ const updateBook = async function (req, res) {
 
 module.exports.updateBook = updateBook
 
-
+// =============================delete book======================================================
 
 const deleteBook = async function (req, res) {
   try {

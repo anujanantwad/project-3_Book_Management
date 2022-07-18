@@ -78,7 +78,7 @@ const createReview = async function (req, res) {
 }
 module.exports.createReview = createReview
 
-
+// ======================================update review============================================
 
 let updateReview = async function (req, res) {
     try {
@@ -135,7 +135,7 @@ let updateReview = async function (req, res) {
 }
 module.exports.updateReview = updateReview
 
-
+// ================================================delete review=====================================================
 
 let deletReview = async function (req, res) {
     try {
